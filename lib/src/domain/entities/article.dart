@@ -21,7 +21,7 @@ class Article extends Equatable {
   final String? description;
   final String? url;
   final String? urlToImage;
-  final DateTime? publishedAt;
+  final String? publishedAt;
   final String? content;
 
   @override
