@@ -3,15 +3,15 @@ import 'package:news_app_clean_architecture/src/domain/entities/article.dart';
 
 class ArticleModel extends Article {
   const ArticleModel({
-    int? id,
+    int id = 0,
     SourceModel? source,
-    String? author,
+    String author = "",
     String? title,
     String? description,
     String? url,
     String? urlToImage,
     String? publishedAt,
-    String? content,
+    String content = "",
   }) : super(
           id: id,
           source: source,
@@ -27,13 +27,13 @@ class ArticleModel extends Article {
   factory ArticleModel.fromJson(Map<String, dynamic> map) {
     return ArticleModel(
       source: SourceModel.fromJson(map['source'] as Map<String, dynamic>),
-      author: map['author'] as String,
-      title: map['title'] as String,
-      description: map['description'] as String,
-      url: map['url'] as String,
-      urlToImage: map['urlToImage'] as String,
-      publishedAt: map['publishedAt'] as String,
-      content: map['content'] as String,
+      author: map['author'] ?? "",
+      title: map['title'] ?? "",
+      description: map['description'] ?? "",
+      url: map['url'] ?? "",
+      urlToImage: map['urlToImage'] ?? "",
+      publishedAt: map['publishedAt'] ?? "",
+      content: map['content'] ?? "",
     );
   }
 }
