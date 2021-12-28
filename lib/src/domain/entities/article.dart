@@ -1,8 +1,21 @@
 import 'package:equatable/equatable.dart';
-
+import 'package:floor/floor.dart';
+import 'package:news_app_clean_architecture/src/core/utils/constants.dart';
 import 'source.dart';
 
+@Entity(tableName: kArticlesTableName)
 class Article extends Equatable {
+  @PrimaryKey(autoGenerate: true)
+  final int? id;
+
+  final Source? source;
+  final String? author;
+  final String? title;
+  final String? description;
+  final String? url;
+  final String? urlToImage;
+  final String? publishedAt;
+  final String? content;
   const Article({
     this.id,
     this.source,
@@ -14,15 +27,6 @@ class Article extends Equatable {
     this.publishedAt,
     this.content,
   });
-  final int? id;
-  final Source? source;
-  final String? author;
-  final String? title;
-  final String? description;
-  final String? url;
-  final String? urlToImage;
-  final String? publishedAt;
-  final String? content;
 
   @override
   List<Object?> get props {

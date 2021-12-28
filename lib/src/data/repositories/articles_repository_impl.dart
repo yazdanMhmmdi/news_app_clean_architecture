@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:news_app_clean_architecture/src/data/datasources/local/app_database.dart';
 import 'package:news_app_clean_architecture/src/data/datasources/remote/news_api_service.dart';
 import 'package:news_app_clean_architecture/src/domain/entities/article.dart';
 import 'package:news_app_clean_architecture/src/core/resources/data_state.dart';
@@ -8,9 +9,13 @@ import 'package:news_app_clean_architecture/src/domain/repositories/articles_rep
 import 'package:dio/dio.dart';
 
 class ArticlesRepositoryImpl implements ArticlesRepository {
-  ArticlesRepositoryImpl(this._newsApiService);
-
+  ArticlesRepositoryImpl(this._newsApiService, this._appDatabase);
+  //  Api Service
   final NewsApiService _newsApiService;
+
+  //  Database
+  final AppDatabase _appDatabase;
+
   @override
   Future<DataState<List<Article>>> getBreakingNewsArticles(
       ArticlesRequestParams params) async {
@@ -34,5 +39,20 @@ class ArticlesRepositoryImpl implements ArticlesRepository {
     } on DioError catch (e) {
       return DataFailed(e);
     }
+  }
+
+  @override
+  Future<List<Article>> getSavedArticles() {
+    return _appDatabase.articlesDao.getAllArticles();
+  }
+
+  @override
+  Future<void> removeArticle(Article article) {
+    return _appDatabase.articlesDao.deleteArticle(article);
+  }
+
+  @override
+  Future<void> saveArticle(Article article) {
+    return _appDatabase.articlesDao.insertArticle(article);
   }
 }

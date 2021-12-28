@@ -109,10 +109,10 @@ class BreakingNewsPage extends HookWidget {
   }
 
   void _onArticlePressed(BuildContext context, Article article) {
-    Navigator.pushNamed(context, '/ArticleDetailsView', arguments: article);
+    Navigator.pushNamed(context, '/ArticleDetailsPage', arguments: article);
   }
 
   void _onShowSavedArticlesViewTapped(BuildContext context) {
-    Navigator.pushNamed(context, '/SavedArticlesView');
+    Navigator.pushNamed(context, '/SavedArticlesPage');
   }
 }
