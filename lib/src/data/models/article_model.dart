@@ -5,13 +5,13 @@ class ArticleModel extends Article {
   const ArticleModel({
     int id = 0,
     SourceModel? source,
-    String author = "",
+    String? author,
     String? title,
     String? description,
     String? url,
     String? urlToImage,
     String? publishedAt,
-    String content = "",
+    String? content,
   }) : super(
           id: id,
           source: source,
